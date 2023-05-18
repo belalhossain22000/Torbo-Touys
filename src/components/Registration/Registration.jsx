@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -7,6 +7,7 @@ import { updateProfile } from "firebase/auth";
 const Registration = () => {
   const { createUser, auth } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [error,setError]=useState('')
 
   const {
     register,
@@ -15,6 +16,7 @@ const Registration = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    setError('')
     // console.log(data);
     const { email, name, password, photoUrl } = data;
 
@@ -34,10 +36,14 @@ const Registration = () => {
             console.log("Profile updated successfully!");
           })
           .catch((error) => {
+            setError(error.message)
             console.log(error.message);
           });
       })
-      .catch((error) => console.log(error.message));
+      .catch((error) => {
+        console.log(error.message)
+        setError(error.message)
+      });
   };
 
   return (
@@ -128,6 +134,7 @@ const Registration = () => {
             </p>
           )}
         </div>
+        <p className="text-red-500 text-xs italic my-5">{error}</p>
         <div className="flex items-center justify-center">
           <button
             type="submit"

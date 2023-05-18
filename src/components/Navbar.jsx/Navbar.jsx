@@ -3,19 +3,19 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
-  const { user,logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  const handleLogOut=()=>{
+  const handleLogOut = () => {
     logOut()
-    .then(()=>{
-        console.log('user logged out');
-    })
-    .catch(error => console.log(error.message));
-  }
+      .then(() => {
+        console.log("user logged out");
+      })
+      .catch((error) => console.log(error.message));
+  };
 
   return (
     <nav className="bg-gray-800 text-white p-4">
@@ -38,24 +38,35 @@ const Navbar = () => {
                 All Toys
               </Link>
             </li>
-            <li>
-              <Link to="/my-toys" className="hover:text-gray-300">
-                My Toys
-              </Link>
-            </li>
-            <li>
-              <Link to="/add-toy" className="hover:text-gray-300">
-                Add A Toy
-              </Link>
-            </li>
+            {user && (
+              <li>
+                <Link to="/my-toys" className="hover:text-gray-300">
+                  My Toys
+                </Link>
+              </li>
+            )}
+            {user && (
+              <li>
+                <Link to="/add-toy" className="hover:text-gray-300">
+                  Add A Toy
+                </Link>
+              </li>
+            )}
             <li>
               <Link to="/blogs" className="hover:text-gray-300">
                 Blogs
               </Link>
             </li>
-            <li>
-              <Link className="hover:text-gray-300">Profile</Link>
-            </li>
+            {user && (
+              <li className="tooltip tooltip-left tooltip-primary" data-tip={user && user?.displayName}>
+                <img
+                  className="w-[40px] h-[40px] rounded-full "
+                  
+                  src={user?.photoURL}
+                  alt="profile picture"
+                />
+              </li>
+            )}
             {user ? (
               <li onClick={handleLogOut}>
                 <Link className="hover:text-gray-300">Logout</Link>

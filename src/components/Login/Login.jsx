@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -7,6 +7,7 @@ import AuthProvider, { AuthContext } from "../../Provider/AuthProvider";
 const Login = () => {
   const { loginUser, googleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [error, setError] = useState("");
   //   const location = useLocation();
   //   const from = location?.state?.from?.pathname || "/";
   //   console.log(googleLogin)
@@ -27,22 +28,23 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error.message);
+        setError(error.message)
       });
   };
 
   //google login
 
-  const handleGoogleLogin =()=>{
+  const handleGoogleLogin = () => {
     googleLogin()
-    .then(result => {
+      .then((result) => {
         console.log(result.user);
         navigate("/");
-
-    })
-    .catch(error => {
+      })
+      .catch((error) => {
         console.log(error.message);
-    })
-  }
+        setError(error.message)
+      });
+  };
 
   return (
     <div className="flex justify-center items-center  h-screen bg-gray-100">
@@ -92,6 +94,7 @@ const Login = () => {
             </p>
           )}
         </div>
+        <p className="text-red-500 text-xs italic my-5">{error}</p>
         <div className="flex items-center justify-center">
           <button
             type="submit"
@@ -110,8 +113,11 @@ const Login = () => {
         </div>
         <div className="divider">OR</div>
         <div className="text-center">
-          <button onClick={handleGoogleLogin} className="btn btn-circle btn-outline">
-           g
+          <button
+            onClick={handleGoogleLogin}
+            className="btn btn-circle btn-outline w-1/2"
+          >
+           <span className="mr-5"> g  </span> <span>login with google</span>
           </button>
         </div>
       </form>

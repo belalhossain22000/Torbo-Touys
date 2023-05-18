@@ -18,11 +18,11 @@ const BannerSection = () => {
         <SwiperSlide>
           <div className="banner-slide">
             <img className='w-full h-[100vh]' src="https://img.freepik.com/premium-vector/outdoor-scene-with-children-racing-car_1308-80333.jpg?w=826" alt="Banner Slide 1" />
-            <div className="banner-content">
+            {/* <div className="banner-content">
               <h2>Discover the Excitement</h2>
               <p>Find the perfect toy for your little one.</p>
               <a href="/toys" className="btn btn-primary">Shop Now</a>
-            </div>
+            </div> */}
           </div>
         </SwiperSlide>
         <SwiperSlide>
