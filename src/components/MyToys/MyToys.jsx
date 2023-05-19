@@ -16,24 +16,24 @@ const MyToys = () => {
       });
   }, [user]);
   return (
-    <div className="overflow-x-auto w-full">
+    <div className="overflow-x-auto w-full ">
       <table className="table w-full sm:table-auto">
         {/* head */}
         <thead>
           <tr>
             <th className="sm:w-auto">
-              <label>
-                <input type="checkbox" className="checkbox" />
-              </label>
+              delete
             </th>
             <th>Picture</th>
             <th>Name</th>
+            <th className="sm:w-1/5">Toy Name</th>
             <th className="sm:w-1/5">Seller Name</th>
             <th className="sm:w-1/4">Seller Email</th>
             <th className="sm:w-1/4">Sub-category</th>
             <th className="sm:w-1/6">Price</th>
             <th>Rating</th>
             <th className="sm:w-1/6">Quantity</th>
+            <th className="sm:w-1/6">Description</th>
             <th></th>
           </tr>
         </thead>
@@ -41,7 +41,7 @@ const MyToys = () => {
           {myToys.map((myToy) => (
             <Table key={myToy._id} myToy={myToy}></Table>
           ))}
-          <Table></Table>
+         
         </tbody>
       </table>
     </div>
