@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import ToyUpdateForm from "./ToyUpdateForm";
 
-const Table = ({ myToy }) => {
+const Table = ({ myToy, myToys }) => {
+  const [toy, setToy] = useState({});
+  useEffect(() => {
+    setToy(myToy);
+  }, [myToy]);
   const {
+    _id,
     description,
     subcategory,
     name,
@@ -11,11 +17,30 @@ const Table = ({ myToy }) => {
     rating,
     sellerEmail,
     sellerName,
-  } = myToy || {};
+  } = toy || {};
+
+  //delete btn
+
+  const handleDelete = (id) => {
+    console.log(id);
+    fetch(`http://localhost:5000/toy/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const remaining = myToys.filter((ty) => ty.id !== id);
+       setToy(remaining[0]);
+
+        console.log(remaining[0]);
+      });
+  };
   return (
-    <tr>
+    <tr>  
       <th className="sm:w-auto">
-        <button className="btn btn-circle btn-outline border-2 hover:border-white  text-red-400 hover:bg-red-700">
+        <button
+          onClick={() => handleDelete(_id)}
+          className="btn btn-circle btn-outline border-2 hover:border-white  text-red-400 hover:bg-red-700"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
@@ -54,9 +79,14 @@ const Table = ({ myToy }) => {
       </td>
 
       <th>
-        <button className="text-blue-500 underline focus:outline-none">
-          Details
-        </button>
+        {/* The button to open modal */}
+        <label
+          htmlFor="update-data-modal"
+          className="text-blue-500 underline focus:outline-none"
+        >
+          Update
+        </label>
+        <ToyUpdateForm myToy={myToy}></ToyUpdateForm>
       </th>
     </tr>
   );

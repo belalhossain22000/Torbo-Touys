@@ -4,7 +4,7 @@ import Table from "./Table";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
 
   const [myToys, setMyToys] = useState([]);
 
@@ -39,7 +39,7 @@ const MyToys = () => {
         </thead>
         <tbody>
           {myToys.map((myToy) => (
-            <Table key={myToy._id} myToy={myToy}></Table>
+            <Table key={myToy._id} myToy={myToy} myToys={myToys}></Table>
           ))}
          
         </tbody>
