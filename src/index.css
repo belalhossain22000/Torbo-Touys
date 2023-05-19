@@ -3,3 +3,6 @@
 @tailwind utilities;
 
 
+.btn-outlines{
+    @apply bg-purple-100 text-black hover:text-white hover:bg-purple-700 border border-purple-500
+}
