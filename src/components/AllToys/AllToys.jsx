@@ -55,7 +55,7 @@ const AllToysPage = () => {
               </td>
               <td className="py-2 text-center px-4 border-b">{toy.name}</td>
               <td className="py-2 text-center px-4 border-b">
-                {toy.subCategory}
+                {toy.subcategory}
               </td>
               <td className="py-2 text-center px-4 border-b">${toy.price}</td>
               <td className="py-2 text-center   px-4 border-b">
@@ -64,7 +64,7 @@ const AllToysPage = () => {
               <td className="py-2 text-center px-4 border-b">
                 {/* The button to open modal */}
                 <label
-                  htmlFor="my-modal-5"
+                  htmlFor="toy-detail-modal"
                   className="text-blue-500 underline focus:outline-none"
                   onClick={() => handleViewDetails(toy._id)}
                 >

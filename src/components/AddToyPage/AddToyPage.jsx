@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 function AddToyPage() {
+  const { user } = useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
@@ -9,7 +13,18 @@ function AddToyPage() {
 
   const onSubmit = (data) => {
     console.log(data);
-    // Perform any additional actions, such as submitting the form data to a server
+    //Added a data
+    fetch(`http://localhost:5000/addToys`, {
+      method: "POST",
+      headers:{
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(data)
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+      });
   };
 
   return (
@@ -36,7 +51,7 @@ function AddToyPage() {
 
         <div className="mb-4">
           <label htmlFor="name" className="block font-bold">
-            Name:
+            Toy Name:
           </label>
           <input
             id="name"
@@ -62,6 +77,7 @@ function AddToyPage() {
             Seller email:
           </label>
           <input
+            value={user.email}
             id="sellerEmail"
             {...register("sellerEmail")}
             className="w-full p-2 border border-gray-300 rounded"
@@ -78,9 +94,9 @@ function AddToyPage() {
             className="w-full p-2 border border-gray-300 rounded"
           >
             <option value="">Select a sub-category</option>
-            <option value="Math Toys">Math Toys</option>
-            <option value="Language Toys">Language Toys</option>
-            <option value="Science Toys">Science Toys</option>
+            <option value="sports-car">Sports car</option>
+            <option value="mini-police car">Mini police car</option>
+            <option value="regular-car">Regular car</option>
           </select>
           {errors.subcategory && (
             <p className="text-red-500">Sub-category is required.</p>
@@ -142,7 +158,6 @@ function AddToyPage() {
             <p className="text-red-500">Description is required.</p>
           )}
         </div>
-       
 
         <button
           type="submit"

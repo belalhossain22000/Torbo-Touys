@@ -4,24 +4,25 @@ const Modal = ({ toy }) => {
   const {
     description,
     name,
-    pictureURL,
+    pictureUrl,
     price,
     quantity,
     rating,
     sellerEmail,
     sellerName,
   } = toy;
+  console.log(pictureUrl)
   return (
     <div>
       {/* Put this part before </body> tag */}
-      <input type="checkbox" id="my-modal-5" className="modal-toggle" />
+      <input type="checkbox" id="toy-detail-modal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box w-11/12 max-w-5xl">
           <div className="hero  bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
               <div className="w-1/2">
                 <img
-                  src={pictureURL}
+                  src={pictureUrl}
                   className="max-w-sm rounded-lg shadow-2xl"
                 />
               </div>
@@ -37,7 +38,7 @@ const Modal = ({ toy }) => {
             </div>
           </div>
           <div className="modal-action">
-            <label htmlFor="my-modal-5" className="btn">
+            <label htmlFor="toy-detail-modal" className="btn">
               close
             </label>
           </div>
