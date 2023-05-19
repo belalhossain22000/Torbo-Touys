@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import Modal from "../Modal/Modal";
 
 const AllToysPage = () => {
   const [toys, setToys] = useState([]);
-  const [toy,setToy]=useState({});
-  console.log(toy)
+  const [toy, setToy] = useState({});
+  console.log(toy);
 
   const allToys = useLoaderData();
   useEffect(() => {
@@ -15,7 +16,7 @@ const AllToysPage = () => {
     console.log(toyId);
     fetch(`http://localhost:5000/toy/${toyId}`)
       .then((res) => res.json())
-      .then((data) =>setToy(data));
+      .then((data) => setToy(data));
   };
 
   const handleSearch = (event) => {
@@ -55,17 +56,22 @@ const AllToysPage = () => {
               <td className="py-2 px-4 border-b">${toy.price}</td>
               <td className="py-2 px-4 border-b">{toy.quantity}</td>
               <td className="py-2 px-4 border-b">
-                <button
+                {/* The button to open modal */}
+                <label
+                  htmlFor="my-modal-5"
                   className="text-blue-500 underline focus:outline-none"
                   onClick={() => handleViewDetails(toy._id)}
                 >
-                  View Details
-                </button>
+                  Vew Details
+                </label>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      
+
+      <Modal toy={toy}></Modal>
     </div>
   );
 };
