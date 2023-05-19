@@ -1,50 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 const AllToysPage = () => {
-  const [selectedToyId, setSelectedToyId] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [toys, setToys] = useState([]);
+  const [toy,setToy]=useState({});
+  console.log(toy)
 
   const allToys = useLoaderData();
- 
-  console.log(allToys);
-
-
-
-
-  const toys = [
-    {
-      id: 1,
-      seller: "John Doe",
-      name: "Sports Car",
-      subcategory: "Toy Cars",
-      price: 29.99,
-      quantity: 10,
-    },
-    {
-      id: 2,
-      seller: "Jane Smith",
-      name: "Marvel Superhero",
-      subcategory: "Action Figures",
-      price: 12.99,
-      quantity: 5,
-    },
-    // Add more toy objects as needed
-  ];
+  useEffect(() => {
+    setToys(allToys);
+  }, [allToys]);
 
   const handleViewDetails = (toyId) => {
-    setSelectedToyId(toyId);
+    console.log(toyId);
+    fetch(`http://localhost:5000/toy/${toyId}`)
+      .then((res) => res.json())
+      .then((data) =>setToy(data));
   };
 
   const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
+    fetch(`http://localhost:5000/allToysByTex/${event.target.value}`)
+      .then((res) => res.json())
+      .then((data) => setToys(data));
   };
-
-  const filteredToys = toys.filter((toy) =>
-    toy.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const selectedToy = toys.find((toy) => toy.id === selectedToyId);
 
   return (
     <div className="container mx-auto">
@@ -54,7 +32,6 @@ const AllToysPage = () => {
           type="text"
           placeholder="Search by toy name"
           className="px-4 py-2 border border-gray-300 focus:outline-none"
-          value={searchTerm}
           onChange={handleSearch}
         />
       </div>
@@ -70,7 +47,7 @@ const AllToysPage = () => {
           </tr>
         </thead>
         <tbody>
-          {allToys.map((toy) => (
+          {toys.map((toy) => (
             <tr key={toy._id} className="hover:bg-gray-100">
               <td className="py-2 px-4 border-b">{toy.sellerName}</td>
               <td className="py-2 px-4 border-b">{toy.name}</td>
@@ -80,7 +57,7 @@ const AllToysPage = () => {
               <td className="py-2 px-4 border-b">
                 <button
                   className="text-blue-500 underline focus:outline-none"
-                  onClick={() => handleViewDetails(toy.id)}
+                  onClick={() => handleViewDetails(toy._id)}
                 >
                   View Details
                 </button>
@@ -89,23 +66,6 @@ const AllToysPage = () => {
           ))}
         </tbody>
       </table>
-
-      {selectedToy && (
-        <div className="mt-4">
-          <h2 className="text-xl font-bold mb-2">Toy Details</h2>
-          <p>
-            Seller: {selectedToy.seller}
-            <br />
-            Toy Name: {selectedToy.name}
-            <br />
-            Sub-category: {selectedToy.subcategory}
-            <br />
-            Price: ${selectedToy.price}
-            <br />
-            Available Quantity: {selectedToy.quantity}
-          </p>
-        </div>
-      )}
     </div>
   );
 };
