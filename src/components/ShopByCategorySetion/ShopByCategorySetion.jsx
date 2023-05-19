@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
 const ShopByCategorySection = () => {
+
+//fetch data by category
+const [categoryData,setCategoryData]= useState([])
+
+const handleFetchByCategory=(category)=>{
+  fetch(`http://localhost:5000/allToysByTex/${category}`)
+  .then(res=>res.json())
+  .then(data=>{
+    console.log(data)
+    setCategoryData(data)
+  
+  })
+
+}
+
   const toyCars = [
     {
       picture:
@@ -97,77 +112,34 @@ const ShopByCategorySection = () => {
   ];
 
   return (
-    // <section className="shop-by-category">
-    //   <h2>Shop by Category</h2>
-    //   <Tabs className="text-center ">
-    //     <TabList>
-    //       <Tab>Toy Cars</Tab>
-    //       <Tab>Action Figures</Tab>
-    //       <Tab>Animal Toys</Tab>
-    //     </TabList>
-
-    //     <TabPanel>
-    //       <h3>Toy Cars Sub-Categories</h3>
-    //       {toyCars.map((toy, index) => (
-    //         <div key={index} className="toy ">
-    //           <img src={toy.picture} alt={toy.name} className="toy-image" />
-    //           <h4>{toy.name}</h4>
-    //           <p>Price: ${toy.price}</p>
-    //           <p>Rating: {toy.rating}</p>
-    //           <button className="btn">View Details</button>
-    //         </div>
-    //       ))}
-    //     </TabPanel>
-
-    //     <TabPanel>
-    //       <h3>Action Figures Sub-Categories</h3>
-    //       {actionFigures.map((toy, index) => (
-    //         <div key={index} className="toy">
-    //           <img src={toy.picture} alt={toy.name} className="toy-image" />
-    //           <h4>{toy.name}</h4>
-    //           <p>Price: ${toy.price}</p>
-    //           <p>Rating: {toy.rating}</p>
-    //           <button className="btn">View Details</button>
-    //         </div>
-    //       ))}
-    //     </TabPanel>
-
-    //     <TabPanel>
-    //       <h3>Animal Toys Sub-Categories</h3>
-    //       {animalToys.map((toy, index) => (
-    //         <div key={index} className="toy">
-    //           <img src={toy.picture} alt={toy.name} className="toy-image" />
-    //           <h4>{toy.name}</h4>
-    //           <p>Price: ${toy.price}</p>
-    //           <p>Rating: {toy.rating}</p>
-    //           <button className="btn">View Details</button>
-    //         </div>
-    //       ))}
-    //     </TabPanel>
-    //   </Tabs>
-    // </section>
     <section className="shop-by-category">
       <h2 className="text-center text-2xl mb-6">Shop by Category</h2>
       <Tabs className="text-center">
         <TabList className="flex justify-center mb-4">
-          <Tab className="text-gray-600 cursor-pointer hover:text-gray-800 px-4 py-2 border-b-2 border-transparent hover:border-gray-600 focus:outline-none transition duration-150 ease-in-out">
-            Toy Cars
+          <Tab onClick={()=>handleFetchByCategory('sports-car')} className="text-gray-600 cursor-pointer hover:text-gray-800 px-4 py-2 border-b-2 border-transparent hover:border-gray-600 focus:outline-none transition duration-150 ease-in-out">
+            Sports Car
           </Tab>
-          <Tab className="text-gray-600 cursor-pointer hover:text-gray-800 px-4 py-2 border-b-2 border-transparent hover:border-gray-600 focus:outline-none transition duration-150 ease-in-out">
-            Action Figures
+          <Tab onClick={()=>handleFetchByCategory('mini-police car')} className="text-gray-600 cursor-pointer hover:text-gray-800 px-4 py-2 border-b-2 border-transparent hover:border-gray-600 focus:outline-none transition duration-150 ease-in-out">
+            Mini Police Car
           </Tab>
-          <Tab className="text-gray-600 cursor-pointer hover:text-gray-800 px-4 py-2 border-b-2 border-transparent hover:border-gray-600 focus:outline-none transition duration-150 ease-in-out">
-            Animal Toys
+          <Tab onClick={()=>handleFetchByCategory('regular-car')} className="text-gray-600 cursor-pointer hover:text-gray-800 px-4 py-2 border-b-2 border-transparent hover:border-gray-600 focus:outline-none transition duration-150 ease-in-out">
+            Regular Car
           </Tab>
         </TabList>
+
+
+{/* sports car */}
 
         <TabPanel>
           <h3 className="text-xl mb-4">Toy Cars Sub-Categories</h3>
           <div className="grid grid-cols-3 gap-4">
-            {toyCars.map((toy, index) => (
-              <div key={index} className="toy bg-white rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-2">
+            {categoryData.map((toy, index) => (
+              <div
+                key={toy._id}
+                className="toy bg-white rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-2"
+              >
                 <img
-                  src={toy.picture}
+                  src={toy.pictureUrl}
                   alt={toy.name}
                   className="toy-image w-full h-40 object-cover rounded-t-lg"
                 />
@@ -181,14 +153,19 @@ const ShopByCategorySection = () => {
             ))}
           </div>
         </TabPanel>
+
+{/* mini police car */}
 
         <TabPanel>
           <h3 className="text-xl mb-4">Action Figures Sub-Categories</h3>
           <div className="grid grid-cols-3 gap-4">
-            {actionFigures.map((toy, index) => (
-              <div key={index} className="toy bg-white rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-2">
+            {categoryData.map((toy, index) => (
+              <div
+                key={toy._id}
+                className="toy bg-white rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-2"
+              >
                 <img
-                  src={toy.picture}
+                  src={toy.pictureUrl}
                   alt={toy.name}
                   className="toy-image w-full h-40 object-cover rounded-t-lg"
                 />
@@ -203,13 +180,18 @@ const ShopByCategorySection = () => {
           </div>
         </TabPanel>
 
+{/* regular car */}
+
         <TabPanel>
           <h3 className="text-xl mb-4">Animal Toys Sub-Categories</h3>
           <div className="grid grid-cols-3 gap-4">
-            {animalToys.map((toy, index) => (
-              <div key={index} className="toy bg-white rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-2">
+            {categoryData.map((toy) => (
+              <div
+                key={toy._id}
+                className="toy bg-white rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-2"
+              >
                 <img
-                  src={toy.picture}
+                  src={toy.pictureUrl}
                   alt={toy.name}
                   className="toy-image w-full h-40 object-cover rounded-t-lg"
                 />
