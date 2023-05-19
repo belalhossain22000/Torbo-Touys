@@ -1,8 +1,16 @@
 import React, { useState } from "react";
+import { useLoaderData } from "react-router-dom";
 
 const AllToysPage = () => {
   const [selectedToyId, setSelectedToyId] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+
+  const allToys = useLoaderData();
+ 
+  console.log(allToys);
+
+
+
 
   const toys = [
     {
@@ -62,11 +70,11 @@ const AllToysPage = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredToys.map((toy) => (
-            <tr key={toy.id} className="hover:bg-gray-100">
-              <td className="py-2 px-4 border-b">{toy.seller}</td>
+          {allToys.map((toy) => (
+            <tr key={toy._id} className="hover:bg-gray-100">
+              <td className="py-2 px-4 border-b">{toy.sellerName}</td>
               <td className="py-2 px-4 border-b">{toy.name}</td>
-              <td className="py-2 px-4 border-b">{toy.subcategory}</td>
+              <td className="py-2 px-4 border-b">{toy.subCategory}</td>
               <td className="py-2 px-4 border-b">${toy.price}</td>
               <td className="py-2 px-4 border-b">{toy.quantity}</td>
               <td className="py-2 px-4 border-b">
