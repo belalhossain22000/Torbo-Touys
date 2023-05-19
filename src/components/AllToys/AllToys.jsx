@@ -50,12 +50,18 @@ const AllToysPage = () => {
         <tbody>
           {toys.map((toy) => (
             <tr key={toy._id} className="hover:bg-gray-100">
-              <td className="py-2 px-4 border-b">{toy.sellerName}</td>
-              <td className="py-2 px-4 border-b">{toy.name}</td>
-              <td className="py-2 px-4 border-b">{toy.subCategory}</td>
-              <td className="py-2 px-4 border-b">${toy.price}</td>
-              <td className="py-2 px-4 border-b">{toy.quantity}</td>
-              <td className="py-2 px-4 border-b">
+              <td className="py-2 text-center px-4 border-b">
+                {toy.sellerName}
+              </td>
+              <td className="py-2 text-center px-4 border-b">{toy.name}</td>
+              <td className="py-2 text-center px-4 border-b">
+                {toy.subCategory}
+              </td>
+              <td className="py-2 text-center px-4 border-b">${toy.price}</td>
+              <td className="py-2 text-center   px-4 border-b">
+                {toy.quantity}
+              </td>
+              <td className="py-2 text-center px-4 border-b">
                 {/* The button to open modal */}
                 <label
                   htmlFor="my-modal-5"
@@ -69,7 +75,6 @@ const AllToysPage = () => {
           ))}
         </tbody>
       </table>
-      
 
       <Modal toy={toy}></Modal>
     </div>
