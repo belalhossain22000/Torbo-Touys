@@ -21,9 +21,9 @@ const Navbar = () => {
     <nav className="bg-gray-800 text-white p-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
-          <Link to="/" className="flex items-center text-xl font-bold">
-            <img src="logo.png" alt="Website Logo" className="w-8 h-8 mr-2" />
-            Toy Marketplace
+          <Link to="/" className="flex items-center md:text-5xl sm:text-3xl font-bold">
+            <img src="https://img.freepik.com/free-vector/cute-boy-riding-rocket-cartoon-icon-illustration_138676-2458.jpg?w=740&t=st=1684493922~exp=1684494522~hmac=455f8c8b1396f68dbdc4f7de796348f5c6e83c570b0abe1dcaa53e139f2d8a5b" alt="Website Logo" className="w-20 h-20 mr-2 rounded-full" />
+           TurboToy
           </Link>
         </div>
         <div className="hidden md:flex">
