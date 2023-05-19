@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ToyUpdateForm from "./ToyUpdateForm";
 
-const Table = ({ myToy, myToys }) => {
+const Table = ({ myToy, myToys,setMyToys }) => {
   const [toy, setToy] = useState({});
+  // const [remaining, setRemaining] = useState([]);
   useEffect(() => {
     setToy(myToy);
   }, [myToy]);
@@ -22,20 +23,25 @@ const Table = ({ myToy, myToys }) => {
   //delete btn
 
   const handleDelete = (id) => {
-    console.log(id);
+    const remaining = myToys.filter((ty) => ty.id !== id);
+    setMyToys(remaining);
+
     fetch(`http://localhost:5000/toy/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((data) => {
-        const remaining = myToys.filter((ty) => ty.id !== id);
-       setToy(remaining[0]);
-
-        console.log(remaining[0]);
+       
       });
   };
+
+  // useEffect(() => {
+  //   remaining.map((restTy) => setToy(restTy));
+  // },[remaining])
+
+
   return (
-    <tr>  
+    <tr>
       <th className="sm:w-auto">
         <button
           onClick={() => handleDelete(_id)}

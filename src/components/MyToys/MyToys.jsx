@@ -14,7 +14,7 @@ const MyToys = () => {
       .then((data) => {
         setMyToys(data);
       });
-  }, [user]);
+  }, [user,myToys]);
   return (
     <div className="overflow-x-auto w-full ">
       <table className="table w-full sm:table-auto">
@@ -39,7 +39,7 @@ const MyToys = () => {
         </thead>
         <tbody>
           {myToys.map((myToy) => (
-            <Table key={myToy._id} myToy={myToy} myToys={myToys}></Table>
+            <Table key={myToy._id} myToy={myToy} myToys={myToys} setMyToys={setMyToys}></Table>
           ))}
          
         </tbody>
