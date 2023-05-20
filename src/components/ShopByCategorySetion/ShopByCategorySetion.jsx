@@ -4,16 +4,22 @@ import { Rating } from "@smastrom/react-rating";
 import { ToastContainer, toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 import "@smastrom/react-rating/style.css";
 import "react-tabs/style/react-tabs.css";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const ShopByCategorySection = () => {
-  const {user}=useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   //fetch data by category
   const [categoryData, setCategoryData] = useState([]);
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+    });
+  }, []);
 
   useEffect(() => {
     handleFetchByCategory("sports-car");
@@ -28,9 +34,11 @@ const ShopByCategorySection = () => {
       });
   };
 
-  const notify = () => toast( "“You have to log in first to view details”");
+  const notify = () => toast("“You have to log in first to view details”");
   return (
-    <section className="shop-by-category bg-purple-100 py-8 my-12">
+    <section
+    data-aos="fade-up"
+    data-aos-duration="1000" className="shop-by-category bg-purple-100 py-8 my-12">
       <h2 className="text-center text-5xl mb-6 font-bold">Shop by Category</h2>
       <Tabs className="">
         <TabList className="flex justify-center mb-4">
@@ -66,6 +74,8 @@ const ShopByCategorySection = () => {
           <div className="grid md:grid-cols-3 gap-4">
             {categoryData.map((toy, index) => (
               <div
+                data-aos="zoom-in"
+                data-aos-duration="1000"
                 key={toy._id}
                 className="toy bg-white rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-2"
               >
@@ -85,10 +95,13 @@ const ShopByCategorySection = () => {
                       readOnly
                     />
                   </div>
-                  <button onClick={!user&&notify} className="btn-outlines btn mt-4">
+                  <button
+                    onClick={!user && notify}
+                    className="btn-outlines btn mt-4"
+                  >
                     <Link to={`/details/${toy._id}`}>View Details</Link>
                   </button>
-                  <ToastContainer/>
+                  <ToastContainer />
                 </div>
               </div>
             ))}
@@ -104,6 +117,8 @@ const ShopByCategorySection = () => {
           <div className="grid md:grid-cols-3 gap-4">
             {categoryData.map((toy, index) => (
               <div
+                data-aos="zoom-in"
+                data-aos-duration="1000"
                 key={toy._id}
                 className="toy bg-white rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-2"
               >
@@ -122,7 +137,10 @@ const ShopByCategorySection = () => {
                       readOnly
                     />
                   </div>
-                  <button onClick={!user&&notify} className="btn btn-outlines mt-4">
+                  <button
+                    onClick={!user && notify}
+                    className="btn btn-outlines mt-4"
+                  >
                     <Link to={`/details/${toy._id}`}>View Details</Link>
                   </button>
                   <ToastContainer></ToastContainer>
@@ -141,6 +159,8 @@ const ShopByCategorySection = () => {
           <div className="grid md:grid-cols-3 gap-4">
             {categoryData.map((toy) => (
               <div
+                data-aos="zoom-in"
+                data-aos-duration="1000"
                 key={toy._id}
                 className="toy bg-white rounded-lg overflow-hidden shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-2"
               >
@@ -159,7 +179,10 @@ const ShopByCategorySection = () => {
                       readOnly
                     />
                   </div>
-                  <button onClick={!user&&notify} className="btn btn-outlines mt-4">
+                  <button
+                    onClick={!user && notify}
+                    className="btn btn-outlines mt-4"
+                  >
                     <Link to={`/details/${toy._id}`}>View Details</Link>
                   </button>
                   <ToastContainer></ToastContainer>

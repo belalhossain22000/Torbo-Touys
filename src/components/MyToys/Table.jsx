@@ -72,7 +72,7 @@ const Table = ({ myToy, handleDelete }) => {
         {/* The button to open modal */}
         <label
           htmlFor="update-data-modal"
-          className="text-blue-500 underline focus:outline-none"
+          className="text-purple-800 underline focus:outline-none"
         >
           Update
         </label>

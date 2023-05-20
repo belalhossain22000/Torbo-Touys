@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const GallerySection = () => {
   const images = [
@@ -13,13 +15,24 @@ const GallerySection = () => {
     "https://img.freepik.com/free-photo/red-car-with-christmas-ball-top_1252-296.jpg?w=740&t=st=1684571890~exp=1684572490~hmac=80e5be5de1f28735406892efb2c357b980d7fde4b07048366d6eeb76d006e989",
     "https://img.freepik.com/free-photo/fun-3d-illustration-american-referee_183364-81225.jpg?w=740&t=st=1684571996~exp=1684572596~hmac=1fc4a4d5e477403d209ad142c13b660662dd411e155175f7bd539f283aa13ec8",
   ];
+  
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+    });
+  }, []);
 
   return (
     <section className="bg-purple-100 py-8 my-12">
-      <h2 className="text-5xl font-bold text-center mb-6 ">Gallery</h2>
+      <h2 className="text-5xl font-bold text-center mb-6">Gallery</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
         {images.map((image, index) => (
-          <div key={index} className="overflow-hidden rounded-lg shadow-md">
+          <div
+            key={index}
+            className="overflow-hidden rounded-lg shadow-md"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <img
               src={image}
               alt={`Gallery Image ${index + 1}`}

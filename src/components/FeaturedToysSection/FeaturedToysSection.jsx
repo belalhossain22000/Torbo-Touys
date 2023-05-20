@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const FeaturedToysSection = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+    });
+  }, []);
   return (
     <div className=" bg-purple-200 py-5">
       <h1 className="font-bold text-5xl text-center my-10 ">Why chose us ?</h1>
-      <div className="grid md:grid-cols-4 gap-14 p-20  bg-purple-700 text-center">
+      <div
+        data-aos="fade-up"
+        data-aos-duration="800"
+        className="grid md:grid-cols-4 gap-14 p-20  bg-purple-700 text-center"
+      >
         <div className="flex flex-col items-center space-y-4">
           <img
             className="w-20"

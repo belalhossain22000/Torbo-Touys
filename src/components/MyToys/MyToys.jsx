@@ -14,19 +14,31 @@ const MyToys = () => {
 
   const [selectedValue, setSelectedValue] = useState("");
 
+  // fetch(`https://assaignment-11-server.vercel.app/toyByEmail/${user?.email}`)
+
   useEffect(() => {
-    fetch(`https://assaignment-11-server.vercel.app/toyByEmail/${user?.email}`)
+    fetch(
+      `https://assaignment-11-server.vercel.app/toyByEmail/${user?.email}?sortBy=${selectedValue}}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setMyToys(data);
       });
-  }, [user, remainings]);
+  }, [user, remainings,]);
 
   const handleSelectChange = (event) => {
     setSelectedValue(event.target.value);
-    console.log(event.target.value);
+    // console.log(event.target.value);
+    // Fetch the sorted data based on the selected value
+    fetch(
+      `https://assaignment-11-server.vercel.app/toyByEmail/${user?.email}?sortBy=${event.target.value}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setMyToys(data);
+      });
   };
- //delete btn
+  //delete btn
   const handleDelete = (id) => {
     fetch(`https://assaignment-11-server.vercel.app/toy/${id}`, {
       method: "DELETE",
@@ -48,7 +60,7 @@ const MyToys = () => {
               const remaining = myToys.filter((ty) => ty._id !== id);
 
               setRemainings(remaining);
-              console.log(data,remaining);
+              console.log(data, remaining);
             }
           });
         }
@@ -85,6 +97,7 @@ const MyToys = () => {
             <th>Rating</th>
             <th className="sm:w-1/6">Quantity</th>
             <th className="sm:w-1/6">Description</th>
+            <th className="sm:w-1/6">Update</th>
             <th></th>
           </tr>
         </thead>
