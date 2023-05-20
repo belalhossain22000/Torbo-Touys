@@ -7,7 +7,7 @@ import TestimonialsSection from "../TestimonialsSection/TestimonialsSection";
 import useTitle from "../../useTitle";
 
 const Home = () => {
- 
+  useTitle('TurboToy')
   return (
     <div>
       <BannerSection></BannerSection>
