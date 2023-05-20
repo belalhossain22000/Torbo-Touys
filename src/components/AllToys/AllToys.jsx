@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Modal from "../Modal/Modal";
 import PrivetRout from "../../Routes/PrivetRout";
+import useTitle from "../../useTitle";
 
 const AllToysPage = () => {
   const [toys, setToys] = useState([]);
   const [toy, setToy] = useState({});
   console.log(toy);
+
+  useTitle('AllToy')
 
   const allToys = useLoaderData();
   useEffect(() => {

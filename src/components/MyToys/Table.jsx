@@ -4,10 +4,12 @@ import Swal from "sweetalert2";
 
 const Table = ({ myToy, myToys, setMyToys }) => {
   const [toy, setToy] = useState({});
-  // const [remaining, setRemaining] = useState([]);
+  
   useEffect(() => {
     setToy(myToy);
   }, [myToy]);
+
+
   const {
     _id,
     description,
@@ -32,7 +34,7 @@ const Table = ({ myToy, myToys, setMyToys }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.deletedCount > 0) {
+        if (data.deletedCount> 0) {
           Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",

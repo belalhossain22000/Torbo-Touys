@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Table from "./Table";
+import useTitle from "../../useTitle";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   // console.log(user);
+  useTitle('MyToy')
 
   const [myToys, setMyToys] = useState([]);
 

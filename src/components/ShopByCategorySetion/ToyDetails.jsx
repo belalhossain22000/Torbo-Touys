@@ -20,7 +20,7 @@ const ToyDetails = () => {
 
   const notify = () => toast("Wow so easy !");
   return (
-    <div className="card lg:card-side bg-purple-200 shadow-md">
+    <div className="card lg:card-side my-14 md:w-[80%] mx-auto bg-purple-200 shadow-md">
       <figure className="w-[60%]">
         <img src={pictureUrl} alt="Album" />
       </figure>

@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
+import useTitle from "../../useTitle";
 
 const Registration = () => {
+  useTitle('Registration');
   const { createUser, auth } = useContext(AuthContext);
   const navigate = useNavigate();
   const [error,setError]=useState('')

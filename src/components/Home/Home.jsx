@@ -4,8 +4,10 @@ import GallerySection from "../GallerySecton/GellerySection";
 import ShopByCategorySection from "../ShopByCategorySetion/ShopByCategorySetion";
 import FeaturedToysSection from "../FeaturedToysSection/FeaturedToysSection";
 import TestimonialsSection from "../TestimonialsSection/TestimonialsSection";
+import useTitle from "../../useTitle";
 
 const Home = () => {
+ 
   return (
     <div>
       <BannerSection></BannerSection>
