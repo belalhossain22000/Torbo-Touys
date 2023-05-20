@@ -23,22 +23,22 @@ const Modal = ({ toy }) => {
               <div className="w-1/2">
                 <img
                   src={pictureUrl}
-                  className="max-w-sm rounded-lg shadow-2xl"
+                  className="w-full h-full rounded-lg shadow-2xl"
                 />
               </div>
-              <div className="w-1/2">
+              <div className="w-1/2 p-5">
                 <h1 className="text-5xl font-bold">{name}</h1>
-                <p className="py-3">{sellerName}</p>
-                <p className="py-3">{sellerEmail}</p>
-                <p className="py-3">{price}</p>
-                <p className="py-3">{rating}</p>
-                <p className="py-3">{quantity}</p>
+                <p className="py-3"> Seller Name{sellerName}</p>
+                <p className="py-3">Seller Email: {sellerEmail}</p>
+                <p className="py-3">Price : ${price}</p>
+                <p className="py-3">Rating : {rating}</p>
+                <p className="py-3">Quantity: {quantity}</p>
                 <p className="py-3">{description}</p>
               </div>
             </div>
           </div>
           <div className="modal-action">
-            <label htmlFor="toy-detail-modal" className="btn">
+            <label htmlFor="toy-detail-modal" className="btn hover:bg-purple-900 bg-purple-700">
               close
             </label>
           </div>

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const ToyUpdateForm = ({ myToy }) => {
   const { user } = useContext(AuthContext);
@@ -24,28 +25,35 @@ const ToyUpdateForm = ({ myToy }) => {
   } = myToy || {};
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     //updatet start
-    fetch(`http://localhost:5000/toy/${_id}`,{
-        method: "PUT",
-        headers:{
-            "content-type": "application/json",
-        },
-        body: JSON.stringify(data)
+    fetch(`http://localhost:5000/toy/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
     })
-    .then(res=>res.json())
-    .then(data =>{
-        console.log(data)
-    })
-
-
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.ok > 0) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          console.log(data);
+        }
+      });
   };
   return (
     <div>
       {/* Put this part before </body> tag */}
       <input type="checkbox" id="update-data-modal" className="modal-toggle" />
       <div className="modal">
-        <div className="modal-box w-11/12 max-w-7xl relative">
+        <div className="modal-box w-11/12 max-w-7xl">
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="max-w-6xl mx-auto p-6 bg-gray-100 border border-gray-300 rounded"
@@ -53,7 +61,7 @@ const ToyUpdateForm = ({ myToy }) => {
             <h1 className="text-2xl text-center mb-4">Update A Toy</h1>
 
             <div className="grid grid-cols-2 gap-5">
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <label htmlFor="pictureUrl" className="block font-bold">
                   Picture URL of the toy:
                 </label>
@@ -66,9 +74,9 @@ const ToyUpdateForm = ({ myToy }) => {
                 {errors.pictureUrl && (
                   <p className="text-red-500">Picture URL is required.</p>
                 )}
-              </div>
+              </div> */}
 
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <label htmlFor="name" className="block font-bold">
                   Toy Name:
                 </label>
@@ -81,9 +89,9 @@ const ToyUpdateForm = ({ myToy }) => {
                 {errors.name && (
                   <p className="text-red-500">Name is required.</p>
                 )}
-              </div>
+              </div> */}
 
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <label htmlFor="sellerName" className="block font-bold">
                   Seller name:
                 </label>
@@ -93,9 +101,9 @@ const ToyUpdateForm = ({ myToy }) => {
                   {...register("sellerName")}
                   className="w-full p-2 border border-gray-300 rounded"
                 />
-              </div>
+              </div> */}
 
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <label htmlFor="sellerEmail" className="block font-bold">
                   Seller email:
                 </label>
@@ -105,9 +113,9 @@ const ToyUpdateForm = ({ myToy }) => {
                   {...register("sellerEmail")}
                   className="w-full p-2 border border-gray-300 rounded"
                 />
-              </div>
+              </div> */}
 
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <label htmlFor="subcategory" className="block font-bold">
                   Sub-category:
                 </label>
@@ -124,7 +132,7 @@ const ToyUpdateForm = ({ myToy }) => {
                 {errors.subcategory && (
                   <p className="text-red-500">Sub-category is required.</p>
                 )}
-              </div>
+              </div> */}
 
               <div className="mb-4">
                 <label htmlFor="price" className="block font-bold">
@@ -141,7 +149,7 @@ const ToyUpdateForm = ({ myToy }) => {
                 )}
               </div>
 
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <label htmlFor="rating" className="block font-bold">
                   Rating:
                 </label>
@@ -154,7 +162,7 @@ const ToyUpdateForm = ({ myToy }) => {
                 {errors.rating && (
                   <p className="text-red-500">Please enter a valid rating.</p>
                 )}
-              </div>
+              </div> */}
 
               <div className="mb-4">
                 <label htmlFor="quantity" className="block font-bold">
@@ -185,19 +193,21 @@ const ToyUpdateForm = ({ myToy }) => {
                   <p className="text-red-500">Description is required.</p>
                 )}
               </div>
-             
 
               <button
                 type="submit"
-                className="w-full py-2 px-4 bg-green-500 text-white font-bold  rounded"
+                className="w-full py-2 px-4 bg-purple-700 hover:bg-purple-950 text-white font-bold  rounded"
               >
                 Add Toy
               </button>
             </div>
           </form>
-          <div className="modal-action absolute top-0 right-0">
-            <label htmlFor="update-data-modal" className="btn">
-              X
+          <div className="modal-action ">
+            <label
+              htmlFor="update-data-modal"
+              className="btn hover:bg-purple-900 bg-purple-800"
+            >
+              close
             </label>
           </div>
         </div>

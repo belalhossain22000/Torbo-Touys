@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Modal from "../Modal/Modal";
+import PrivetRout from "../../Routes/PrivetRout";
 
 const AllToysPage = () => {
   const [toys, setToys] = useState([]);
@@ -26,13 +27,13 @@ const AllToysPage = () => {
   };
 
   return (
-    <div className="container mx-auto">
-      <h1 className="text-2xl font-bold mb-4">All Toys</h1>
-      <div className="mb-4">
+    <div className="container mx-auto my-14 bg-purple-200">
+      <h1 className="text-4xl  font-bold mb-4 text-center ">All Toys</h1>
+      <div className="mb-4 text-center">
         <input
           type="text"
           placeholder="Search by toy name"
-          className="px-4 py-2 border border-gray-300 focus:outline-none"
+          className="p-5 w-2/3 border rounded  border-gray-300 focus:outline-none"
           onChange={handleSearch}
         />
       </div>
@@ -44,6 +45,7 @@ const AllToysPage = () => {
             <th className="py-2 px-4 border-b">Sub-category</th>
             <th className="py-2 px-4 border-b">Price</th>
             <th className="py-2 px-4 border-b">Available Quantity</th>
+            <th className="py-2 px-4 border-b">Vew Details</th>
             <th className="py-2 px-4 border-b"></th>
           </tr>
         </thead>
@@ -63,9 +65,10 @@ const AllToysPage = () => {
               </td>
               <td className="py-2 text-center px-4 border-b">
                 {/* The button to open modal */}
+
                 <label
                   htmlFor="toy-detail-modal"
-                  className="text-blue-500 underline focus:outline-none"
+                  className="text-purple-900 underline focus:outline-none"
                   onClick={() => handleViewDetails(toy._id)}
                 >
                   Vew Details

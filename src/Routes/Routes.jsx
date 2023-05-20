@@ -29,11 +29,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/my-toys",
-        element: <MyToys></MyToys>,
+        element: <PrivetRout><MyToys></MyToys></PrivetRout>,
       },
       {
         path: "/add-toy",
-        element: <AddToyPage></AddToyPage>,
+        element: <PrivetRout><AddToyPage></AddToyPage></PrivetRout>,
       },
       {
         path: "/blogs",

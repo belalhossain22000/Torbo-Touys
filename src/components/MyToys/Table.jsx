@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ToyUpdateForm from "./ToyUpdateForm";
+import Swal from "sweetalert2";
 
-const Table = ({ myToy, myToys,setMyToys }) => {
+const Table = ({ myToy, myToys, setMyToys }) => {
   const [toy, setToy] = useState({});
   // const [remaining, setRemaining] = useState([]);
   useEffect(() => {
@@ -24,21 +25,33 @@ const Table = ({ myToy, myToys,setMyToys }) => {
 
   const handleDelete = (id) => {
     const remaining = myToys.filter((ty) => ty.id !== id);
-    setMyToys(remaining);
+   
 
     fetch(`http://localhost:5000/toy/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((data) => {
+        if (data.deletedCount > 0) {
+          Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire("Deleted!", "Your Toy has been deleted.", "success");
+              setMyToys(remaining);
+              console.log(data);
+            }
+          });
+        }
        
       });
   };
-
-  // useEffect(() => {
-  //   remaining.map((restTy) => setToy(restTy));
-  // },[remaining])
-
 
   return (
     <tr>

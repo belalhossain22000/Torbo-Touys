@@ -61,7 +61,7 @@ const ShopByCategorySection = () => {
           <h3 className="text-xl mb-4 text-center">
             Sports Car Sub-Categories
           </h3>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-3 gap-4">
             {categoryData.map((toy, index) => (
               <div
                 key={toy._id}
@@ -99,7 +99,7 @@ const ShopByCategorySection = () => {
           <h3 className="text-xl mb-4 text-center">
             Mini Police Car Sub-Categories
           </h3>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-3 gap-4">
             {categoryData.map((toy, index) => (
               <div
                 key={toy._id}
@@ -135,7 +135,7 @@ const ShopByCategorySection = () => {
           <h3 className="text-xl mb-4 text-center">
             Regular Car Sub-Categories
           </h3>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-3 gap-4">
             {categoryData.map((toy) => (
               <div
                 key={toy._id}

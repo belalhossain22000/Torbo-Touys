@@ -2,7 +2,9 @@ import React from "react";
 
 const TestimonialsSection = () => {
   return (
-    <div className="carousel w-full text-white mt-14">
+    <div className="bg-purple-200">
+      <h1 className="text-5xl p-5 font-bold text-center mt-10">Our Clients </h1>
+      <div className="carousel w-full text-white mt-14">
       <div
         id="slide1"
         className="carousel-item relative w-full space-y-5 flex flex-col justify-center items-center text-center  bg-purple-700 h-[60vh]"
@@ -40,8 +42,8 @@ const TestimonialsSection = () => {
         <div className="space-y-5">
           <h1 className="text-4xl font-bold">What our Happy Clients Say</h1>
           <p className="font-semibold">
-          'Great selection of toys and excellent customer service. Highly recommended!',.
-            The perfect place to find gifts for my little ones!'
+            'Great selection of toys and excellent customer service. Highly
+            recommended!',. The perfect place to find gifts for my little ones!'
           </p>
         </div>
         <div className="flex items-center gap-5 space-y-5">
@@ -100,7 +102,8 @@ const TestimonialsSection = () => {
         <div className="space-y-5">
           <h1 className="text-4xl font-bold">What our Happy Clients Say</h1>
           <p className="font-semibold">
-          The toys I bought from this marketplace are amazing! My kids love them.',
+            The toys I bought from this marketplace are amazing! My kids love
+            them.',
           </p>
         </div>
         <div className="flex items-center gap-5 space-y-5">
@@ -122,6 +125,7 @@ const TestimonialsSection = () => {
           </a>
         </div>
       </div>
+    </div>
     </div>
   );
 };

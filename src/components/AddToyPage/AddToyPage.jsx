@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 function AddToyPage() {
   const { user } = useContext(AuthContext);
@@ -16,13 +17,22 @@ function AddToyPage() {
     //Added a data
     fetch(`http://localhost:5000/addToys`, {
       method: "POST",
-      headers:{
-        'content-type': 'application/json',
+      headers: {
+        "content-type": "application/json",
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
       .then((res) => res.json())
       .then((result) => {
+        if (result.insertedId) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Your Toy Added Successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
         console.log(result);
       });
   };
@@ -30,11 +40,11 @@ function AddToyPage() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="max-w-6xl mx-auto p-6 bg-gray-100 border border-gray-300 rounded"
+      className="max-w-6xl bg-purple-200 my-14  mx-auto p-6  border border-gray-300 rounded"
     >
       <h1 className="text-2xl text-center mb-4">Add A Toy</h1>
 
-      <div className="grid grid-cols-2 gap-5">
+      <div className="grid md:grid-cols-2 gap-5">
         <div className="mb-4">
           <label htmlFor="pictureUrl" className="block font-bold">
             Picture URL of the toy:
@@ -161,7 +171,7 @@ function AddToyPage() {
 
         <button
           type="submit"
-          className="w-full py-2 px-4 bg-green-500 text-white font-bold rounded"
+          className="w-full py-2 px-4 bg-purple-800 text-white font-bold rounded"
         >
           Add Toy
         </button>
