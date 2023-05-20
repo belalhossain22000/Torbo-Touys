@@ -18,7 +18,7 @@ const BannerSection = () => {
         <SwiperSlide>
           <div className="banner-slide">
             <img
-              className="w-full h-[90vh]"
+              className="w-full md:h-[90vh] h-[50vh]"
               src="https://i.ibb.co/NsDZ1xP/banner-image.jpg"
               alt="Banner Slide 1"
             />

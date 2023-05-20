@@ -47,7 +47,7 @@ const Registration = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
+    <div className="flex justify-center items-center h-screen bg-purple-200">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-1/2"
@@ -61,7 +61,7 @@ const Registration = () => {
           </label>
           <input
             {...register("name", { required: "Name is required" })}
-            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+            className={`shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
               errors.name ? "border-red-500" : ""
             }`}
             type="text"
@@ -80,7 +80,7 @@ const Registration = () => {
           </label>
           <input
             {...register("email", { required: "Email is required" })}
-            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+            className={`shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
               errors.email ? "border-red-500" : ""
             }`}
             type="email"
@@ -101,7 +101,7 @@ const Registration = () => {
           </label>
           <input
             {...register("password", { required: "Password is required" })}
-            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+            className={`shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
               errors.password ? "border-red-500" : ""
             }`}
             type="password"
@@ -122,7 +122,7 @@ const Registration = () => {
           </label>
           <input
             {...register("photoUrl", { required: "Photo URL is required" })}
-            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+            className={`shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
               errors.photoUrl ? "border-red-500" : ""
             }`}
             type="text"
@@ -138,7 +138,7 @@ const Registration = () => {
         <div className="flex items-center justify-center">
           <button
             type="submit"
-            className="bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="btn-outlines w-full text-xl text-white font-bold py-4 px-4 rounded focus:outline-none focus:shadow-outline"
           >
             Register
           </button>

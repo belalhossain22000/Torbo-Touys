@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import AuthProvider, { AuthContext } from "../../Provider/AuthProvider";
+import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
   const { loginUser, googleLogin } = useContext(AuthContext);
@@ -47,7 +48,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center  h-screen bg-gray-100">
+    <div className="flex justify-center items-center  h-screen bg-purple-100">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-1/2"
@@ -61,7 +62,7 @@ const Login = () => {
           </label>
           <input
             {...register("email", { required: "Email is required" })}
-            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+            className={`shadow appearance-none border rounded w-full py-4 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
               errors.email ? "border-red-500" : ""
             }`}
             type="email"
@@ -82,7 +83,7 @@ const Login = () => {
           </label>
           <input
             {...register("password", { required: "Password is required" })}
-            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+            className={`shadow appearance-none border rounded w-full py-4 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
               errors.password ? "border-red-500" : ""
             }`}
             type="password"
@@ -98,7 +99,7 @@ const Login = () => {
         <div className="flex items-center justify-center">
           <button
             type="submit"
-            className="bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="btn-outlines w-full text-white font-bold py-3 text-2xl px-4 rounded focus:outline-none focus:shadow-outline"
           >
             Log In
           </button>
@@ -115,9 +116,9 @@ const Login = () => {
         <div className="text-center">
           <button
             onClick={handleGoogleLogin}
-            className="btn btn-circle btn-outline w-1/2"
+            className="btn btn-circle   btn-primary bg-purple-700 hover:bg-purple-900 w-1/2"
           >
-           <span className="mr-5"> g  </span> <span>login with google</span>
+           <span className="mr-5 text-2xl text-yellow-500"><FaGoogle></FaGoogle>  </span> <span className="font-bold text-md">login with google</span>
           </button>
         </div>
       </form>

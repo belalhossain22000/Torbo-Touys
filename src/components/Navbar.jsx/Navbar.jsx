@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { FaBars, FaBeer, FaTimes } from "react-icons/fa";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
@@ -26,9 +27,9 @@ const Navbar = () => {
             className="flex items-center md:text-5xl sm:text-3xl font-bold"
           >
             <img
-              src="https://i.ibb.co/cQ7kB85/logo-image.jpg"
+              src="https://i.ibb.co/cg52dm6/logo-image3.jpg"
               alt="Website Logo"
-              className="w-20 h-20 mr-2 rounded-full"
+              className="w-20 h-20  mr-2 rounded-full"
             />
             TurboToy
           </Link>
@@ -90,24 +91,10 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="md:hidden">
-          <button
-            className="focus:outline-none bg-white"
-            onClick={handleMenuToggle}
-          >
-            <svg
-              className="w-6 h-6 fill-current"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                className={isMenuOpen ? "hidden" : "block"}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-              <path
-                className={isMenuOpen ? "block" : "hidden"}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+          <button className="focus:outline-none" onClick={handleMenuToggle}>
+            <FaBars className={isMenuOpen ? "hidden " : "block"} />
+
+            <FaTimes className={isMenuOpen ? "block" : "hidden"}></FaTimes>
           </button>
         </div>
       </div>
@@ -122,26 +109,48 @@ const Navbar = () => {
             All Toys
           </Link>
         </li>
-        <li>
-          <Link to="/my-toys" className="block py-2 hover:text-gray-300">
-            My Toys
-          </Link>
-        </li>
-        <li>
-          <Link to="/add-toy" className="block py-2 hover:text-gray-300">
-            Add A Toy
-          </Link>
-        </li>
+        {user && (
+          <li>
+            <Link to="/my-toys" className="block py-2 hover:text-gray-300">
+              My Toys
+            </Link>
+          </li>
+        )}
+        {user && (
+          <li>
+            <Link to="/add-toy" className="block py-2 hover:text-gray-300">
+              Add A Toy
+            </Link>
+          </li>
+        )}
         <li>
           <Link to="/blogs" className="block py-2 hover:text-gray-300">
             Blogs
           </Link>
         </li>
-        <li>
-          <Link to="/login" className="hover:text-gray-300">
-            Login
-          </Link>
-        </li>
+        {user && (
+          <li
+            className="tooltip tooltip-left tooltip-primary block py-2"
+            data-tip={user && user?.displayName}
+          >
+            <img
+              className="w-[40px] h-[40px] rounded-full "
+              src={user?.photoURL}
+              alt="profile picture"
+            />
+          </li>
+        )}
+        {user ? (
+          <li onClick={handleLogOut}>
+            <Link className="hover:text-gray-300 block py-2">Logout</Link>
+          </li>
+        ) : (
+          <li>
+            <Link to="/login" className="hover:text-gray-300 block py-2">
+              Login
+            </Link>
+          </li>
+        )}
       </ul>
     </nav>
   );
