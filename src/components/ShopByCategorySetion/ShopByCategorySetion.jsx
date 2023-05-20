@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { Rating } from "@smastrom/react-rating";
 import { ToastContainer, toast } from "react-toastify";
@@ -8,8 +8,10 @@ import "react-toastify/dist/ReactToastify.css";
 import "@smastrom/react-rating/style.css";
 import "react-tabs/style/react-tabs.css";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const ShopByCategorySection = () => {
+  const {user}=useContext(AuthContext)
   //fetch data by category
   const [categoryData, setCategoryData] = useState([]);
 
@@ -83,7 +85,7 @@ const ShopByCategorySection = () => {
                       readOnly
                     />
                   </div>
-                  <button onClick={notify} className="btn-outlines btn mt-4">
+                  <button onClick={!user&&notify} className="btn-outlines btn mt-4">
                     <Link to={`/details/${toy._id}`}>View Details</Link>
                   </button>
                   <ToastContainer/>
@@ -120,9 +122,10 @@ const ShopByCategorySection = () => {
                       readOnly
                     />
                   </div>
-                  <button className="btn btn-outlines mt-4">
+                  <button onClick={!user&&notify} className="btn btn-outlines mt-4">
                     <Link to={`/details/${toy._id}`}>View Details</Link>
                   </button>
+                  <ToastContainer></ToastContainer>
                 </div>
               </div>
             ))}
@@ -156,9 +159,10 @@ const ShopByCategorySection = () => {
                       readOnly
                     />
                   </div>
-                  <button className="btn btn-outlines mt-4">
+                  <button onClick={!user&&notify} className="btn btn-outlines mt-4">
                     <Link to={`/details/${toy._id}`}>View Details</Link>
                   </button>
+                  <ToastContainer></ToastContainer>
                 </div>
               </div>
             ))}

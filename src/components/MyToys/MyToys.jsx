@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Table from "./Table";
 import useTitle from "../../useTitle";
+import Swal from "sweetalert2";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
@@ -9,6 +10,7 @@ const MyToys = () => {
   useTitle("MyToy");
 
   const [myToys, setMyToys] = useState([]);
+  const [remainings, setRemainings] = useState([]);
 
   const [selectedValue, setSelectedValue] = useState("");
 
@@ -18,11 +20,39 @@ const MyToys = () => {
       .then((data) => {
         setMyToys(data);
       });
-  }, [user, myToys]);
+  }, [user, remainings]);
 
   const handleSelectChange = (event) => {
     setSelectedValue(event.target.value);
     console.log(event.target.value);
+  };
+ //delete btn
+  const handleDelete = (id) => {
+    fetch(`https://assaignment-11-server.vercel.app/toy/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire("Deleted!", "Your Toy has been deleted.", "success");
+              const remaining = myToys.filter((ty) => ty._id !== id);
+
+              setRemainings(remaining);
+              console.log(data,remaining);
+            }
+          });
+        }
+      });
   };
 
   return (
@@ -64,7 +94,8 @@ const MyToys = () => {
               key={myToy._id}
               myToy={myToy}
               myToys={myToys}
-              setMyToys={setMyToys}
+              // setMyToys={setMyToys}
+              handleDelete={handleDelete}
             ></Table>
           ))}
         </tbody>

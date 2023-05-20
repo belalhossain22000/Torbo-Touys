@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Modal from "../Modal/Modal";
 import PrivetRout from "../../Routes/PrivetRout";
 import useTitle from "../../useTitle";
@@ -20,13 +20,6 @@ const AllToysPage = () => {
   useEffect(() => {
     setToys(allToys);
   }, [allToys]);
-
-  const handleViewDetails = (toyId) => {
-    console.log(toyId);
-    fetch(`https://assaignment-11-server.vercel.app/toy/${toyId}`)
-      .then((res) => res.json())
-      .then((data) => setToy(data));
-  };
 
   const handleSearch = (event) => {
     fetch(
@@ -76,19 +69,8 @@ const AllToysPage = () => {
                 {toy.quantity}
               </td>
               <td className="py-2 text-center px-4 border-b">
-                {/* The button to open modal */}
-
-                <label
-                  htmlFor="toy-detail-modal"
-                  className="text-purple-900 underline focus:outline-none"
-                  onClick={() =>{
-                   if(!user){
-                    notify()
-                   }
-                     handleViewDetails(toy._id)
-                    }}
-                >
-                  Vew Details
+                <label className="text-purple-900 underline focus:outline-none">
+                  <Link to={`/details/${toy._id}`}> Vew Details</Link>
                 </label>
                 <ToastContainer></ToastContainer>
               </td>
@@ -96,8 +78,6 @@ const AllToysPage = () => {
           ))}
         </tbody>
       </table>
-
-      {user && <Modal toy={toy}></Modal>}
     </div>
   );
 };

@@ -21,6 +21,8 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    setError('')
+
     console.log(data);
     const { password, email } = data;
     loginUser(email, password)
@@ -38,6 +40,7 @@ const Login = () => {
   //google login
 
   const handleGoogleLogin = () => {
+    setError('')
     googleLogin()
       .then((result) => {
         console.log(result.user);
