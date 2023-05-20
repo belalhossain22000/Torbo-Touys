@@ -2,7 +2,7 @@ import React from "react";
 
 const FeaturedToysSection = () => {
   return (
-    <div className=" bg-purple-200 p-5">
+    <div className=" bg-purple-200 py-5">
       <h1 className="font-bold text-5xl text-center my-10 ">Why chose us</h1>
       <div className="grid grid-cols-4 gap-14 p-20 h-[50vh] bg-purple-700 text-center">
         <div className="flex flex-col items-center space-y-4">

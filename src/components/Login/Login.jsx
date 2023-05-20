@@ -9,9 +9,9 @@ const Login = () => {
   const { loginUser, googleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
-  //   const location = useLocation();
-  //   const from = location?.state?.from?.pathname || "/";
-  //   console.log(googleLogin)
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || "/";
+    console.log(googleLogin)
   const {
     register,
     handleSubmit,
@@ -25,7 +25,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user, "login success fully");
-        navigate("/");
+        navigate(from, { replace: true });;
       })
       .catch((error) => {
         console.log(error.message);
@@ -39,7 +39,7 @@ const Login = () => {
     googleLogin()
       .then((result) => {
         console.log(result.user);
-        navigate("/");
+        navigate(from, { replace: true });;
       })
       .catch((error) => {
         console.log(error.message);

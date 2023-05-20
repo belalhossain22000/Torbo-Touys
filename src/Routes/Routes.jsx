@@ -9,6 +9,8 @@ import Login from "../components/Login/Login";
 import Registration from "../components/Registration/Registration";
 import Error from "../components/Error/Error";
 import AddToyPage from "../components/AddToyPage/AddToyPage";
+import ToyDetails from "../components/ShopByCategorySetion/ToyDetails";
+import PrivetRout from "./PrivetRout";
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +46,11 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <Registration></Registration>,
+      },
+      {
+        path: "/details/:id",
+        element: <PrivetRout><ToyDetails></ToyDetails></PrivetRout>,
+        loader:({params})=>fetch(`http://localhost:5000/toy/${params.id}`)
       },
     ],
   },
