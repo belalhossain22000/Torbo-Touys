@@ -18,7 +18,7 @@ const ShopByCategorySection = () => {
   }, []);
 
   const handleFetchByCategory = (category) => {
-    fetch(`http://localhost:5000/allToysByTex/${category}`)
+    fetch(`https://assaignment-11-server.vercel.app/allToysByTex/${category}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

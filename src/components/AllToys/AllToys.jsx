@@ -15,13 +15,13 @@ const AllToysPage = () => {
 
   const handleViewDetails = (toyId) => {
     console.log(toyId);
-    fetch(`http://localhost:5000/toy/${toyId}`)
+    fetch(`https://assaignment-11-server.vercel.app/toy/${toyId}`)
       .then((res) => res.json())
       .then((data) => setToy(data));
   };
 
   const handleSearch = (event) => {
-    fetch(`http://localhost:5000/allToysByTex/${event.target.value}`)
+    fetch(`https://assaignment-11-server.vercel.app/allToysByTex/${event.target.value}`)
       .then((res) => res.json())
       .then((data) => setToys(data));
   };

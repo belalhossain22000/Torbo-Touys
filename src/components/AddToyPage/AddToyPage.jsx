@@ -15,7 +15,7 @@ function AddToyPage() {
   const onSubmit = (data) => {
     console.log(data);
     //Added a data
-    fetch(`http://localhost:5000/addToys`, {
+    fetch(`https://assaignment-11-server.vercel.app/addToys`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
