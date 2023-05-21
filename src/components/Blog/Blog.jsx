@@ -4,7 +4,7 @@ import useTitle from '../../useTitle';
 const Blog = () => {
   useTitle('Blog')
     return (
-        <div className="bg-gray-100 min-h-screen py-10">
+        <div className="bg-purple-300 min-h-screen  py-10">
       <div className="max-w-3xl mx-auto px-4">
         <h1 className="text-4xl font-bold text-center mb-8">Blogs</h1>
 

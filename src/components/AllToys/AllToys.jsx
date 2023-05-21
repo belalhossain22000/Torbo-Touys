@@ -32,13 +32,14 @@ const AllToysPage = () => {
   const notify = () => toast("“You have to log in first to view details”");
 
   return (
-    <div className="container mx-auto my-14 bg-purple-200">
+    <div className="container mx-auto my-14 bg-purple-300">
       <h1 className="text-4xl  font-bold mb-4 text-center ">All Toys</h1>
       <div className="mb-4 text-center">
+        <h4 className="text-2xl font-bold my-5">Search By Toy Name :</h4>
         <input
           type="text"
           placeholder="Search by toy name"
-          className="p-5 w-2/3 border rounded  border-gray-300 focus:outline-none"
+          className="p-4 w-2/3 border rounded  border-purple-800 focus:outline-none"
           onChange={handleSearch}
         />
       </div>

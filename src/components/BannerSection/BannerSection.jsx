@@ -23,10 +23,13 @@ const BannerSection = () => {
         className="swiper-container"
       >
         <SwiperSlide>
-          <div data-aos="zoom-out"
-            data-aos-duration="1000"  className="banner-slide">
+          <div
+            data-aos="zoom-out"
+            data-aos-duration="1000"
+            className="banner-slide"
+          >
             <img
-              className="w-full md:h-[90vh] h-[50vh]"
+              className="w-full "
               src="https://i.ibb.co/NsDZ1xP/banner-image.jpg"
               alt="Banner Slide 1"
             />

@@ -9,7 +9,7 @@ const FeaturedToysSection = () => {
     });
   }, []);
   return (
-    <div className=" bg-purple-200 py-5">
+    <div className=" bg-purple-300 py-5">
       <h1 className="font-bold text-5xl text-center my-10 ">Why chose us ?</h1>
       <div
         data-aos="fade-up"

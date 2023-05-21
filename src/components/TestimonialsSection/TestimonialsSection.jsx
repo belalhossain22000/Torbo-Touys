@@ -10,7 +10,7 @@ const TestimonialsSection = () => {
   }, []);
 
   return (
-    <div className="bg-purple-200">
+    <div className="bg-purple-300">
       <h1 className="text-5xl p-5 font-bold text-center mt-10">Our Clients </h1>
       <div className="carousel w-full text-white mt-14">
         <div

@@ -60,7 +60,7 @@ const ToyUpdateForm = ({ myToy }) => {
           >
             <h1 className="text-2xl text-center mb-4">Update A Toy</h1>
 
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid md:grid-cols-2 gap-5">
               {/* <div className="mb-4">
                 <label htmlFor="pictureUrl" className="block font-bold">
                   Picture URL of the toy:
@@ -69,7 +69,7 @@ const ToyUpdateForm = ({ myToy }) => {
                   defaultValue={pictureUrl}
                   id="pictureUrl"
                   {...register("pictureUrl", { required: true })}
-                  className="w-full p-2 border border-gray-300 rounded"
+                  className="w-full p-4 border border-gray-300 rounded"
                 />
                 {errors.pictureUrl && (
                   <p className="text-red-500">Picture URL is required.</p>
@@ -84,7 +84,7 @@ const ToyUpdateForm = ({ myToy }) => {
                   defaultValue={name}
                   id="name"
                   {...register("name", { required: true })}
-                  className="w-full p-2 border border-gray-300 rounded"
+                  className="w-full p-4 border border-gray-300 rounded"
                 />
                 {errors.name && (
                   <p className="text-red-500">Name is required.</p>
@@ -99,7 +99,7 @@ const ToyUpdateForm = ({ myToy }) => {
                   defaultValue={sellerName}
                   id="sellerName"
                   {...register("sellerName")}
-                  className="w-full p-2 border border-gray-300 rounded"
+                  className="w-full p-4 border border-gray-300 rounded"
                 />
               </div> */}
 
@@ -111,7 +111,7 @@ const ToyUpdateForm = ({ myToy }) => {
                   value={user.email}
                   id="sellerEmail"
                   {...register("sellerEmail")}
-                  className="w-full p-2 border border-gray-300 rounded"
+                  className="w-full p-4 border border-gray-300 rounded"
                 />
               </div> */}
 
@@ -122,7 +122,7 @@ const ToyUpdateForm = ({ myToy }) => {
                 <select
                   id="subcategory"
                   {...register("subcategory", { required: true })}
-                  className="w-full p-2 border border-gray-300 rounded"
+                  className="w-full p-4 border border-gray-300 rounded"
                 >
                   <option value="">Select a sub-category</option>
                   <option value="sports-car">Sports car</option>
@@ -142,7 +142,7 @@ const ToyUpdateForm = ({ myToy }) => {
                   defaultValue={price}
                   id="price"
                   {...register("price", { required: true, pattern: /\d+/ })}
-                  className="w-full p-2 border border-gray-300 rounded"
+                  className="w-full p-4 border border-gray-300 rounded"
                 />
                 {errors.price && (
                   <p className="text-red-500">Please enter a valid price.</p>
@@ -157,7 +157,7 @@ const ToyUpdateForm = ({ myToy }) => {
                   defaultValue={rating}
                   id="rating"
                   {...register("rating", { required: true, pattern: /\d+/ })}
-                  className="w-full p-2 border border-gray-300 rounded"
+                  className="w-full p-4 border border-gray-300 rounded"
                 />
                 {errors.rating && (
                   <p className="text-red-500">Please enter a valid rating.</p>
@@ -172,7 +172,7 @@ const ToyUpdateForm = ({ myToy }) => {
                   defaultValue={quantity}
                   id="quantity"
                   {...register("quantity", { required: true, pattern: /\d+/ })}
-                  className="w-full p-2 border border-gray-300 rounded"
+                  className="w-full p-4 border border-gray-300 rounded"
                 />
                 {errors.quantity && (
                   <p className="text-red-500">Please enter a valid quantity.</p>
@@ -187,7 +187,7 @@ const ToyUpdateForm = ({ myToy }) => {
                   defaultValue={description}
                   id="description"
                   {...register("description", { required: true })}
-                  className="w-full p-2 border border-gray-300 rounded"
+                  className="w-full p-4 border border-gray-300 rounded"
                 />
                 {errors.description && (
                   <p className="text-red-500">Description is required.</p>
@@ -196,7 +196,7 @@ const ToyUpdateForm = ({ myToy }) => {
 
               <button
                 type="submit"
-                className="w-full py-2 px-4 bg-purple-700 hover:bg-purple-950 text-white font-bold  rounded"
+                className="w-full md:h-28 md:text-3xl py-2 px-4 bg-purple-700 hover:bg-purple-950 text-white font-bold  rounded"
               >
                 Add Toy
               </button>
@@ -205,7 +205,7 @@ const ToyUpdateForm = ({ myToy }) => {
           <div className="modal-action ">
             <label
               htmlFor="update-data-modal"
-              className="btn hover:bg-purple-900 bg-purple-800"
+              className="btn hover:bg-purple-900  bg-purple-800"
             >
               close
             </label>

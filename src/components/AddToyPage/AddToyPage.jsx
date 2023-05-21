@@ -43,9 +43,9 @@ function AddToyPage() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="max-w-6xl bg-purple-200 my-14  mx-auto p-6  border border-gray-300 rounded"
+      className="max-w-6xl bg-purple-300 my-14  mx-auto p-6  border border-gray-300 rounded"
     >
-      <h1 className="text-2xl text-center mb-4">Add A Toy</h1>
+      <h1 className="text-2xl font-semibold text-center mb-4">Add A Toy</h1>
 
       <div className="grid md:grid-cols-2 gap-5">
         <div className="mb-4">
@@ -55,7 +55,7 @@ function AddToyPage() {
           <input
             id="pictureUrl"
             {...register("pictureUrl", { required: true })}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-4 border border-gray-300 rounded"
           />
           {errors.pictureUrl && (
             <p className="text-red-500">Picture URL is required.</p>
@@ -69,7 +69,7 @@ function AddToyPage() {
           <input
             id="name"
             {...register("name", { required: true })}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-4 border border-gray-300 rounded"
           />
           {errors.name && <p className="text-red-500">Name is required.</p>}
         </div>
@@ -81,7 +81,7 @@ function AddToyPage() {
           <input
             id="sellerName"
             {...register("sellerName")}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-4 border border-gray-300 rounded"
           />
         </div>
 
@@ -93,7 +93,7 @@ function AddToyPage() {
             value={user.email}
             id="sellerEmail"
             {...register("sellerEmail")}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-4 border border-gray-300 rounded"
           />
         </div>
 
@@ -104,7 +104,7 @@ function AddToyPage() {
           <select
             id="subcategory"
             {...register("subcategory", { required: true })}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-4 border border-gray-300 rounded"
           >
             <option value="">Select a sub-category</option>
             <option value="sports-car">Sports car</option>
@@ -123,7 +123,7 @@ function AddToyPage() {
           <input
             id="price"
             {...register("price", { required: true, pattern: /\d+/ })}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-4 border border-gray-300 rounded"
           />
           {errors.price && (
             <p className="text-red-500">Please enter a valid price.</p>
@@ -137,7 +137,7 @@ function AddToyPage() {
           <input
             id="rating"
             {...register("rating", { required: true, pattern: /\d+/ })}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-4 border border-gray-300 rounded"
           />
           {errors.rating && (
             <p className="text-red-500">Please enter a valid rating.</p>
@@ -151,7 +151,7 @@ function AddToyPage() {
           <input
             id="quantity"
             {...register("quantity", { required: true, pattern: /\d+/ })}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-4 border border-gray-300 rounded"
           />
           {errors.quantity && (
             <p className="text-red-500">Please enter a valid quantity.</p>
@@ -165,7 +165,7 @@ function AddToyPage() {
           <textarea
             id="description"
             {...register("description", { required: true })}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-4 border border-gray-300 rounded"
           />
           {errors.description && (
             <p className="text-red-500">Description is required.</p>
@@ -174,7 +174,7 @@ function AddToyPage() {
 
         <button
           type="submit"
-          className="w-full py-2 px-4 bg-purple-800 text-white font-bold rounded"
+          className="w-full py-2 px-4 md:h-28 md:text-3xl bg-purple-800 text-white font-bold rounded"
         >
           Add Toy
         </button>

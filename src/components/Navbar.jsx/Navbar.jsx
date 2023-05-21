@@ -19,17 +19,17 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-purple-700  text-white p-4">
+    <nav className="bg-purple-700   text-white p-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <Link
             to="/"
-            className="flex items-center md:text-5xl sm:text-3xl font-bold"
+            className="flex items-center md:text-5xl  text-2xl font-bold"
           >
             <img
               src="https://i.ibb.co/cg52dm6/logo-image3.jpg"
               alt="Website Logo"
-              className="w-20 h-20  mr-2 rounded-full"
+              className="md:w-20 h-16 w-16 md:h-20  mr-2 rounded-full"
             />
             TurboToy
           </Link>
@@ -91,7 +91,10 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="md:hidden">
-          <button className="focus:outline-none" onClick={handleMenuToggle}>
+          <button
+            className="focus:outline-none text-2xl"
+            onClick={handleMenuToggle}
+          >
             <FaBars className={isMenuOpen ? "hidden " : "block"} />
 
             <FaTimes className={isMenuOpen ? "block" : "hidden"}></FaTimes>

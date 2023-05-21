@@ -37,29 +37,31 @@ const ShopByCategorySection = () => {
   const notify = () => toast("“You have to log in first to view details”");
   return (
     <section
-    data-aos="fade-up"
-    data-aos-duration="1000" className="shop-by-category bg-purple-100 py-8 my-12">
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      className="shop-by-category bg-purple-300 py-8 my-12"
+    >
       <h2 className="text-center text-5xl mb-6 font-bold">Shop by Category</h2>
       <Tabs className="">
         <TabList className="flex justify-center mb-4">
           <Tab
             onClick={() => handleFetchByCategory("sports-car")}
-            className="font-bold text-gray-600 cursor-pointer hover:text-gray-800 px-4 py-2 border-b-2 border-transparent hover:border-gray-600 focus:outline-none transition duration-150 ease-in-out"
-            selectedClassName="text-purple-600 border-purple-600 "
+            className="font-bold  text-gray-600 cursor-pointer hover:text-gray-800 px-4 py-2 border-b-2 border-transparent hover:border-gray-600 focus:outline-none transition duration-150 ease-in-out"
+            selectedClassName="text-gray-200 hover:text-white rounded-md  bg-purple-700 border-white border-2 "
           >
             Sports Car
           </Tab>
           <Tab
             onClick={() => handleFetchByCategory("mini-police car")}
             className="font-bold text-gray-600 cursor-pointer hover:text-gray-800 px-4 py-2 border-b-2 border-transparent hover:border-gray-600 focus:outline-none transition duration-150 ease-in-out"
-            selectedClassName="text-purple-600 border-purple-600"
+            selectedClassName="text-gray-200 hover:text-white rounded-md  bg-purple-700 border-white border-2"
           >
             Mini Police Car
           </Tab>
           <Tab
             onClick={() => handleFetchByCategory("regular-car")}
             className="font-bold text-gray-600 cursor-pointer hover:text-gray-800 px-4 py-2 border-b-2 border-transparent hover:border-gray-600 focus:outline-none transition duration-150 ease-in-out"
-            selectedClassName="text-purple-600 border-purple-600"
+            selectedClassName="text-gray-200 hover:text-white rounded-md  bg-purple-700 border-white border-2"
           >
             Regular Car
           </Tab>
@@ -68,7 +70,7 @@ const ShopByCategorySection = () => {
         {/* sports car */}
 
         <TabPanel>
-          <h3 className="text-xl mb-4 text-center">
+          <h3 className="text-xl font-semibold mb-4 text-center">
             Sports Car Sub-Categories
           </h3>
           <div className="grid md:grid-cols-3 gap-4">
@@ -91,7 +93,7 @@ const ShopByCategorySection = () => {
 
                     <Rating
                       style={{ maxWidth: 150 }}
-                      value={Math.floor(toy.rating)}
+                      value={Math.round(toy.rating)}
                       readOnly
                     />
                   </div>
@@ -111,7 +113,7 @@ const ShopByCategorySection = () => {
         {/* mini police car */}
 
         <TabPanel>
-          <h3 className="text-xl mb-4 text-center">
+          <h3 className="text-xl mb-4 font-semibold text-center">
             Mini Police Car Sub-Categories
           </h3>
           <div className="grid md:grid-cols-3 gap-4">
@@ -133,7 +135,7 @@ const ShopByCategorySection = () => {
                     <p className="text-gray-600">Price: ${toy.price}</p>
                     <Rating
                       style={{ maxWidth: 150 }}
-                      value={Math.floor(toy.rating)}
+                      value={Math.round(toy.rating)}
                       readOnly
                     />
                   </div>
@@ -153,7 +155,7 @@ const ShopByCategorySection = () => {
         {/* regular car */}
 
         <TabPanel>
-          <h3 className="text-xl mb-4 text-center">
+          <h3 className="text-xl mb-4 text-center font-semibold">
             Regular Car Sub-Categories
           </h3>
           <div className="grid md:grid-cols-3 gap-4">
@@ -175,7 +177,7 @@ const ShopByCategorySection = () => {
                     <p className="text-gray-600">Price: ${toy.price}</p>
                     <Rating
                       style={{ maxWidth: 150 }}
-                      value={Math.floor(toy.rating)}
+                      value={Math.round(toy.rating)}
                       readOnly
                     />
                   </div>

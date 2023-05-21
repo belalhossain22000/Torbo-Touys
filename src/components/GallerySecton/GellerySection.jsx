@@ -23,7 +23,7 @@ const GallerySection = () => {
   }, []);
 
   return (
-    <section className="bg-purple-100 py-8 my-12">
+    <section className="bg-purple-300 py-8 my-12">
       <h2 className="text-5xl font-bold text-center mb-6">Gallery</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
         {images.map((image, index) => (

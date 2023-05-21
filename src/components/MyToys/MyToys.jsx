@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
+
   // console.log(user);
   useTitle("MyToy");
 
@@ -24,7 +25,7 @@ const MyToys = () => {
       .then((data) => {
         setMyToys(data);
       });
-  }, [user, remainings,]);
+  }, [user, remainings]);
 
   const handleSelectChange = (event) => {
     setSelectedValue(event.target.value);
@@ -72,11 +73,11 @@ const MyToys = () => {
       <div className="my-10 text-center flex gap-3 items-center justify-center">
         <h1 className="font-bold ">Sort by :</h1>
         <select
-          className="p-2 border w-1/3  border-gray-300 rounded"
+          className="p-3 border w-1/3  border-purple-700 rounded"
           value={selectedValue}
           onChange={handleSelectChange}
         >
-          <option value="">Select a car</option>
+          <option value="">Ascending/Descending</option>
           <option value="ascending">Ascending</option>
           <option value="descending">Descending</option>
         </select>
