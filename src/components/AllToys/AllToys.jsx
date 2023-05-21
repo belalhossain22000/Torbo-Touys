@@ -32,7 +32,7 @@ const AllToysPage = () => {
   const notify = () => toast("“You have to log in first to view details”");
 
   return (
-    <div className="container mx-auto my-14 bg-purple-300">
+    <div className=" mx-auto my-14 p-5 bg-purple-300">
       <h1 className="text-4xl  font-bold mb-4 text-center ">All Toys</h1>
       <div className="mb-4 text-center">
         <h4 className="text-2xl font-bold my-5">Search By Toy Name :</h4>

@@ -3,13 +3,13 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
 import { GoogleAuthProvider } from "firebase/auth";
-
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -38,13 +38,13 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-   //logout user----------
-   const logOut = () => {
-    setLoading(true)
+  //logout user----------
+  const logOut = () => {
+    setLoading(true);
     return signOut(auth);
   };
 
-  // onothstatec hange-----------------
+  // onothstatechange-----------------
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (loggedInUser) => {
@@ -56,7 +56,13 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  const authInfo = {user, createUser, googleLogin, loginUser,logOut };
+  const authInfo = {
+    user,
+    createUser,
+    googleLogin,
+    loginUser,
+    logOut,
+  };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );

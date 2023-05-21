@@ -46,21 +46,21 @@ const ShopByCategorySection = () => {
         <TabList className="flex justify-center mb-4">
           <Tab
             onClick={() => handleFetchByCategory("sports-car")}
-            className="font-bold  text-gray-600 cursor-pointer hover:text-gray-800 px-4 py-2 border-b-2 border-transparent hover:border-gray-600 focus:outline-none transition duration-150 ease-in-out"
+            className="font-bold  text-white cursor-pointer hover:text-gray-800 px-4 py-2 border-b-2 border-transparent hover:border-gray-600 focus:outline-none transition duration-150 ease-in-out"
             selectedClassName="text-gray-200 hover:text-white rounded-md  bg-purple-700 border-white border-2 "
           >
             Sports Car
           </Tab>
           <Tab
             onClick={() => handleFetchByCategory("mini-police car")}
-            className="font-bold text-gray-600 cursor-pointer hover:text-gray-800 px-4 py-2 border-b-2 border-transparent hover:border-gray-600 focus:outline-none transition duration-150 ease-in-out"
+            className="font-bold text-white cursor-pointer hover:text-gray-800 px-4 py-2 border-b-2 border-transparent hover:border-gray-600 focus:outline-none transition duration-150 ease-in-out"
             selectedClassName="text-gray-200 hover:text-white rounded-md  bg-purple-700 border-white border-2"
           >
             Mini Police Car
           </Tab>
           <Tab
             onClick={() => handleFetchByCategory("regular-car")}
-            className="font-bold text-gray-600 cursor-pointer hover:text-gray-800 px-4 py-2 border-b-2 border-transparent hover:border-gray-600 focus:outline-none transition duration-150 ease-in-out"
+            className="font-bold text-white cursor-pointer hover:text-gray-800 px-4 py-2 border-b-2 border-transparent hover:border-gray-600 focus:outline-none transition duration-150 ease-in-out"
             selectedClassName="text-gray-200 hover:text-white rounded-md  bg-purple-700 border-white border-2"
           >
             Regular Car
@@ -89,7 +89,7 @@ const ShopByCategorySection = () => {
                 <div className="p-4 flex justify-between">
                   <div>
                     <h4 className="text-lg font-semibold">{toy.name}</h4>
-                    <p className="text-gray-600">Price: ${toy.price}</p>
+                    <p className="">Price: ${toy.price}</p>
 
                     <Rating
                       style={{ maxWidth: 150 }}
@@ -132,7 +132,7 @@ const ShopByCategorySection = () => {
                 <div className="p-4 flex justify-between">
                   <div>
                     <h4 className="text-lg font-semibold">{toy.name}</h4>
-                    <p className="text-gray-600">Price: ${toy.price}</p>
+                    <p className="">Price: ${toy.price}</p>
                     <Rating
                       style={{ maxWidth: 150 }}
                       value={Math.round(toy.rating)}
@@ -174,7 +174,7 @@ const ShopByCategorySection = () => {
                 <div className="p-4 flex justify-between">
                   <div>
                     <h4 className="text-lg font-semibold">{toy.name}</h4>
-                    <p className="text-gray-600">Price: ${toy.price}</p>
+                    <p className="">Price: ${toy.price}</p>
                     <Rating
                       style={{ maxWidth: 150 }}
                       value={Math.round(toy.rating)}

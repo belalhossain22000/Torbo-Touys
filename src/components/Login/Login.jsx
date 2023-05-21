@@ -8,9 +8,10 @@ import useTitle from "../../useTitle";
 
 const Login = () => {
   useTitle("Login");
-  const { loginUser, googleLogin } = useContext(AuthContext);
+  const { loginUser, googleLogin} = useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
+  const [email, setEmail] = useState("");
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
   console.log(googleLogin);
@@ -36,7 +37,7 @@ const Login = () => {
         setError(error.message);
       });
   };
-
+  console.log(email);
   //google login
 
   const handleGoogleLogin = () => {
@@ -51,6 +52,8 @@ const Login = () => {
         setError(error.message);
       });
   };
+
+ 
 
   return (
     <div className="flex justify-center items-center bg-purple-300  h-scree p-10">
@@ -109,10 +112,14 @@ const Login = () => {
             Log In
           </button>
         </div>
+
         <div className="flex items-center justify-center mt-4">
           <p className="text-gray-200 text-sm">
             Don't have an account?{" "}
-            <Link to="/register" className="text-blue-400 hover:text-blue-700">
+            <Link
+              to="/register"
+              className="text-blue-400 hover:btn-link hover:text-blue-700"
+            >
               Sign up
             </Link>
           </p>
